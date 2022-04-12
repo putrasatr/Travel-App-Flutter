@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,14 +25,24 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo '),
+      initialRoute: "/",
+      routes: {
+        "/": ((context) => const MyHomePage(title: "Flutter", name: "Judul")),
+        "/login": (context) => const FirstScreen(
+              title: "First Screen",
+            ),
+        "/second": (context) => const SecondScreen(
+              title: "Second Screen",
+            )
+      },
       color: Colors.amber,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title, required this.name})
+      : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -43,6 +54,7 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final String name;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -109,8 +121,25 @@ class _MyHomePageState extends State<MyHomePage> {
               _isCount,
               style: const TextStyle(
                   color: Colors.blueAccent, fontFamily: "Raleway"),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/login");
+                },
+                child: const Text("Login"))
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        // ignore: sized_box_for_whitespace
+        child: Container(
+          height: 60.0,
+          child: const Text(
+            "Navigation",
+            style: TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -118,6 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.addchart),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniStartDocked,
     );
   }
 }
