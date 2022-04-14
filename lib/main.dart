@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/login/screens/login_screen.dart';
+import 'package:travel_app/auth/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+Map<int, Color> color = {
+  50: Color(0xFF411DD3),
+  100: Color.fromRGBO(136, 14, 79, .2),
+  200: Color.fromRGBO(136, 14, 79, .3),
+  300: Color.fromRGBO(136, 14, 79, .4),
+  400: Color.fromRGBO(136, 14, 79, .5),
+  500: Color.fromRGBO(136, 14, 79, .6),
+  600: Color.fromRGBO(136, 14, 79, .7),
+  700: Color.fromRGBO(136, 14, 79, .8),
+  800: Color.fromRGBO(136, 14, 79, .9),
+  900: Color.fromRGBO(136, 14, 79, 1),
+};
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,17 +27,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
-      ),
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: MaterialColor(0xFF411DD3, color)),
       initialRoute: "/",
       routes: {
         "/": ((context) => const MyHomePage(title: "Flutter", name: "Judul")),
@@ -33,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
         "/second": (context) => const SecondScreen(
               title: "Second Screen",
-            )
+            ),
       },
       color: Colors.amber,
     );
